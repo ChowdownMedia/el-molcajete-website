@@ -1,0 +1,16 @@
+{
+  "brand": "El Molcajete",
+  "domain": "elmolcajetemexicanrestaurants.com",
+  "locations": 3,
+  "pages": [
+    "/",
+    "/locations/",
+    "/menu/",
+    "/manchester/",
+    "/manchester/vip/",
+    "/spring-hill/",
+    "/spring-hill/vip/",
+    "/springfield/",
+    "/springfield/vip/"
+  ]
+}

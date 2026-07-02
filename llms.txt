@@ -1,0 +1,12 @@
+# El Molcajete
+
+> El Molcajete — 3 locations. Menu and online ordering (pickup + delivery) per location.
+
+## Locations
+- [Manchester](https://elmolcajetemexicanrestaurants.com/manchester/): 1400 Hillsboro Blvd, Manchester, TN, 37355
+- [Spring Hill](https://elmolcajetemexicanrestaurants.com/spring-hill/): 3020 Belshire Village Dr, Spring Hill, TN, 37174
+- [Springfield](https://elmolcajetemexicanrestaurants.com/springfield/): 1706 Kirby St, Springfield, TN, 37172
+
+## Pages
+- [Menu](https://elmolcajetemexicanrestaurants.com/menu/)
+- [All Locations](https://elmolcajetemexicanrestaurants.com/locations/)

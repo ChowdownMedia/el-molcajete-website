@@ -1,0 +1,7 @@
+# Old per-location subdomains -> consolidated location pages
+https://manchester.elmolcajetemexicanrestaurants.com /manchester/ 301
+https://manchester.elmolcajetemexicanrestaurants.com/* /manchester/ 301
+https://springhill.elmolcajetemexicanrestaurants.com /spring-hill/ 301
+https://springhill.elmolcajetemexicanrestaurants.com/* /spring-hill/ 301
+https://springfield.elmolcajetemexicanrestaurants.com /springfield/ 301
+https://springfield.elmolcajetemexicanrestaurants.com/* /springfield/ 301
