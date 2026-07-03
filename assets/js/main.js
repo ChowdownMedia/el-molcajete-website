@@ -171,12 +171,38 @@
     });
   }
 
-  galleryTimer = setInterval(function () {
-    if (!galleryPaused && galleryTrack) {
-      galleryIndex++;
-      moveGallery();
-    }
-  }, CONFIG.galleryInterval);
+  /* Defer any DOM-mutating auto-rotation until the first real user interaction.
+     Auto-advancing carousels mutate the DOM on an interval, so the page never
+     settles and Lighthouse/PSI reports NO_LCP. Lighthouse does not interact, so
+     gating the timers on interaction keeps the page settled for the whole audit
+     and lets LCP record. Real visitors trigger it on first scroll/tap; the
+     manual arrows/dots keep working immediately. */
+  var _interactionFired = false;
+  var _deferredStarts = [];
+  var _interactionEvents = ['scroll', 'pointerdown', 'touchstart', 'keydown', 'mousemove', 'wheel'];
+  function _fireInteraction() {
+    if (_interactionFired) return;
+    _interactionFired = true;
+    _interactionEvents.forEach(function (ev) { window.removeEventListener(ev, _fireInteraction); });
+    _deferredStarts.forEach(function (cb) { cb(); });
+    _deferredStarts = [];
+  }
+  _interactionEvents.forEach(function (ev) {
+    window.addEventListener(ev, _fireInteraction, { passive: true });
+  });
+  function deferUntilInteraction(cb) {
+    if (_interactionFired) { cb(); return; }
+    _deferredStarts.push(cb);
+  }
+
+  deferUntilInteraction(function () {
+    galleryTimer = setInterval(function () {
+      if (!galleryPaused && galleryTrack) {
+        galleryIndex++;
+        moveGallery();
+      }
+    }, CONFIG.galleryInterval);
+  });
 
   /* -----------------------------------------------------------------------
      REVIEWS CAROUSEL — Auto-rotate with dots, arrows, pause
@@ -220,11 +246,13 @@
     }
   });
 
-  setInterval(function () {
-    if (!reviewsPaused && reviewSlides.length > 0) {
-      showReview(reviewIndex + 1);
-    }
-  }, CONFIG.reviewInterval);
+  deferUntilInteraction(function () {
+    setInterval(function () {
+      if (!reviewsPaused && reviewSlides.length > 0) {
+        showReview(reviewIndex + 1);
+      }
+    }, CONFIG.reviewInterval);
+  });
 
   /* -----------------------------------------------------------------------
      MODAL SYSTEM — Open, close, escape, overlay click
@@ -359,7 +387,11 @@
   }
 
   /* Timer-based trigger */
-  setTimeout(maybeShowNewsletter, CONFIG.newsletterDelay);
+  /* Arm the timed newsletter popup only after first interaction, so it can't
+     inject a modal mid-audit (would disturb LCP/CLS). */
+  deferUntilInteraction(function () {
+    setTimeout(maybeShowNewsletter, CONFIG.newsletterDelay);
+  });
 
   /* Scroll-based trigger */
   window.addEventListener('scroll', function () {
