@@ -680,4 +680,25 @@
   }
   setActiveNav();
 
+  /* -----------------------------------------------------------------------
+     MAP FACADE — inject the live Google Maps iframe only on interaction
+     (keeps ~15 third-party map requests off the critical path)
+     ----------------------------------------------------------------------- */
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest ? e.target.closest('.map-facade') : null;
+    if (!btn) return;
+    var src = btn.getAttribute('data-map-src');
+    if (!src) return;
+    var frame = document.createElement('iframe');
+    frame.src = src;
+    frame.title = 'Interactive map';
+    frame.loading = 'eager';
+    frame.referrerPolicy = 'no-referrer-when-downgrade';
+    frame.style.width = '100%';
+    frame.style.minHeight = '420px';
+    frame.style.border = '0';
+    frame.style.display = 'block';
+    btn.parentNode.replaceChild(frame, btn);
+  });
+
 })();

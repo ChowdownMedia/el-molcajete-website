@@ -1,3 +1,4 @@
+@font-face{font-family:'Cherry Bomb One';font-style:normal;font-weight:400;font-display:swap;src:url(/assets/fonts/cherry-bomb-one-latin.woff2) format('woff2');}
 /* ==========================================================================
    El Molcajete Mexican Restaurant - Master Theme
    Reusable class-based stylesheet reproducing the approved Claude Design mockup.
@@ -341,7 +342,6 @@ img { max-width: 100%; }
   overflow: hidden;
   border: 6px solid var(--cream);
   box-shadow: 0 26px 60px rgba(0,0,0,0.5);
-  animation: emFloat 7s ease-in-out infinite;
 }
 .hero-img { display: block; width: 100%; height: 520px; object-fit: cover; }
 .hero-img--location { height: 420px; }
@@ -1186,3 +1186,7 @@ img { max-width: 100%; }
   .marquee-track { font-size: 22px; }
   .modal-content { padding: 26px 22px; }
 }
+
+.map-facade{width:100%;min-height:420px;border:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;cursor:pointer;text-align:center;background:radial-gradient(120% 120% at 50% 0%,#3A1712 0%,#2A1510 70%);color:#F2C86A;font-family:var(--font-body);padding:28px;}.map-facade svg{width:46px;height:46px;color:var(--gold);}.map-facade-title{font-family:var(--font-display);font-size:25px;color:#FFF7E6;}.map-facade-sub{font-size:14.5px;color:#D8BE93;max-width:360px;line-height:1.45;}.map-facade:hover .map-facade-title{color:var(--gold);}
+
+.section--cream .section-head .lead{color:var(--brown);}
