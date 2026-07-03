@@ -719,11 +719,9 @@
      Released shortly after load; motion is decorative so a JS-less fallback
      of "no animation" is acceptable.
      ----------------------------------------------------------------------- */
-  function releaseMotion() {
-    setTimeout(function () { document.body.classList.remove('motion-hold'); }, 80);
-  }
-  if (document.readyState === 'complete') releaseMotion();
-  else window.addEventListener('load', releaseMotion);
+  deferUntilInteraction(function () {
+    document.body.classList.remove('motion-hold');
+  });
 
   /* -----------------------------------------------------------------------
      MAP FACADE — inject the live Google Maps iframe only on interaction
