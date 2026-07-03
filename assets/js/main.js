@@ -681,6 +681,19 @@
   setActiveNav();
 
   /* -----------------------------------------------------------------------
+     MOTION HOLD — ambient CSS animations (marquee, spinning gradients, sway)
+     are paused via body.motion-hold until the page has loaded, so the page
+     reaches idle and Lighthouse/PSI can finalize an LCP (otherwise NO_LCP).
+     Released shortly after load; motion is decorative so a JS-less fallback
+     of "no animation" is acceptable.
+     ----------------------------------------------------------------------- */
+  function releaseMotion() {
+    setTimeout(function () { document.body.classList.remove('motion-hold'); }, 80);
+  }
+  if (document.readyState === 'complete') releaseMotion();
+  else window.addEventListener('load', releaseMotion);
+
+  /* -----------------------------------------------------------------------
      MAP FACADE — inject the live Google Maps iframe only on interaction
      (keeps ~15 third-party map requests off the critical path)
      ----------------------------------------------------------------------- */

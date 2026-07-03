@@ -1190,3 +1190,5 @@ img { max-width: 100%; }
 .map-facade{width:100%;min-height:420px;border:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;cursor:pointer;text-align:center;background:radial-gradient(120% 120% at 50% 0%,#3A1712 0%,#2A1510 70%);color:#F2C86A;font-family:var(--font-body);padding:28px;}.map-facade svg{width:46px;height:46px;color:var(--gold);}.map-facade-title{font-family:var(--font-display);font-size:25px;color:#FFF7E6;}.map-facade-sub{font-size:14.5px;color:#D8BE93;max-width:360px;line-height:1.45;}.map-facade:hover .map-facade-title{color:var(--gold);}
 
 .section--cream .section-head .lead{color:var(--brown);}
+
+body.motion-hold *,body.motion-hold *::before,body.motion-hold *::after{animation-play-state:paused!important;}
