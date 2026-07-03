@@ -1628,7 +1628,7 @@ img { max-width: 100%; }
      a Lighthouse/PSI audit (an ungated setInterval keeps the page repainting
      forever and yields NO_LCP). Manual arrows work immediately. */
   var timer=null,started=false;
-  var evs=['scroll','pointerdown','touchstart','keydown','mousemove','wheel'];
+  var evs=['pointerdown','touchstart','keydown','wheel','click'];
   function start(){
     if(started)return;started=true;
     evs.forEach(function(ev){window.removeEventListener(ev,start);});

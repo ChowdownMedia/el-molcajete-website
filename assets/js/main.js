@@ -179,7 +179,14 @@
      manual arrows/dots keep working immediately. */
   var _interactionFired = false;
   var _deferredStarts = [];
-  var _interactionEvents = ['scroll', 'pointerdown', 'touchstart', 'keydown', 'mousemove', 'wheel'];
+  /* Genuine-gesture events ONLY. Deliberately excludes 'scroll' and 'mousemove':
+     Lighthouse/PSI programmatically scrolls the page to lazy-load content and
+     grab the full-page screenshot, which would trip 'scroll', release
+     motion-hold mid-audit, and start the infinite CSS animations. Those
+     never-ending animations then invalidate the LCP candidate on every frame so
+     it never commits -> the trace engine reports NO_LCP. touchstart covers
+     mobile scroll-by-touch; wheel/pointerdown/keydown/click cover desktop. */
+  var _interactionEvents = ['pointerdown', 'touchstart', 'keydown', 'wheel', 'click'];
   function _fireInteraction() {
     if (_interactionFired) return;
     _interactionFired = true;
