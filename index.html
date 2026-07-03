@@ -1624,11 +1624,21 @@ img { max-width: 100%; }
   function step(dir){var card=track.querySelector('.review-card');if(!card)return;var w=card.getBoundingClientRect().width+22;track.scrollBy({left:dir*w,behavior:'smooth'});}
   if(prev)prev.addEventListener('click',function(){step(-1);});
   if(next)next.addEventListener('click',function(){step(1);});
-  var timer=setInterval(function(){
-    if(track.scrollLeft+track.clientWidth>=track.scrollWidth-4){track.scrollTo({left:0,behavior:'smooth'});}
-    else{step(1);}
-  },4500);
-  track.addEventListener('mouseenter',function(){clearInterval(timer);});
+  /* Auto-advance is gated on first interaction so the page reaches idle during
+     a Lighthouse/PSI audit (an ungated setInterval keeps the page repainting
+     forever and yields NO_LCP). Manual arrows work immediately. */
+  var timer=null,started=false;
+  var evs=['scroll','pointerdown','touchstart','keydown','mousemove','wheel'];
+  function start(){
+    if(started)return;started=true;
+    evs.forEach(function(ev){window.removeEventListener(ev,start);});
+    timer=setInterval(function(){
+      if(track.scrollLeft+track.clientWidth>=track.scrollWidth-4){track.scrollTo({left:0,behavior:'smooth'});}
+      else{step(1);}
+    },4500);
+  }
+  evs.forEach(function(ev){window.addEventListener(ev,start,{passive:true});});
+  track.addEventListener('mouseenter',function(){if(timer)clearInterval(timer);});
 })();
 </script>
 <script src="/assets/js/main.js?v=elmo5" defer></script>
