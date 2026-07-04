@@ -679,7 +679,7 @@ img { max-width: 100%; }
   display: flex;
   gap: 22px;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
+
   scroll-behavior: smooth;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -1169,13 +1169,6 @@ img { max-width: 100%; }
 
   .hero-img { height: 340px; }
   .hero-img--location { height: 300px; }
-
-  /* Mobile: show the hero image in the initial viewport as a stable, eager LCP
-     element. When it stacks below the headline/CTA/stats it falls below the
-     fold, so the only large paints are below-fold lazy images that load during
-     scroll -> the LCP element shifts out of the viewport and cannot be pinned,
-     which reads as NO_LCP on throttled PageSpeed runs. Image-first fixes it. */
-  .hero-inner > .hero-media { order: -1; }
 
   .hero-stats { flex-wrap: wrap; gap: 16px 26px; }
   .stat-div { display: none; }
