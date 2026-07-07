@@ -734,9 +734,7 @@
      MAP FACADE — inject the live Google Maps iframe only on interaction
      (keeps ~15 third-party map requests off the critical path)
      ----------------------------------------------------------------------- */
-  document.addEventListener('click', function (e) {
-    var btn = e.target.closest ? e.target.closest('.map-facade') : null;
-    if (!btn) return;
+  function loadMapFacade(btn) {
     var src = btn.getAttribute('data-map-src');
     if (!src) return;
     var frame = document.createElement('iframe');
@@ -749,6 +747,24 @@
     frame.style.border = '0';
     frame.style.display = 'block';
     btn.parentNode.replaceChild(frame, btn);
+  }
+  // Click still loads it immediately.
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest ? e.target.closest('.map-facade') : null;
+    if (btn) loadMapFacade(btn);
   });
+  // Auto-load each map when it nears the viewport (stays off the initial
+  // critical path, but no click required).
+  (function () {
+    var facades = [].slice.call(document.querySelectorAll('.map-facade'));
+    if (!facades.length) return;
+    if (!('IntersectionObserver' in window)) { facades.forEach(loadMapFacade); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { io.unobserve(en.target); loadMapFacade(en.target); }
+      });
+    }, { rootMargin: '300px' });
+    facades.forEach(function (f) { io.observe(f); });
+  })();
 
 })();
