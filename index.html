@@ -495,6 +495,7 @@ img { max-width: 100%; }
 .dish-card:hover { border-color: rgba(242,168,29,0.6); transform: translateY(-4px); }
 .dish-bar { position: absolute; top: 0; left: 0; height: 4px; width: 100%; }
 .dish-glyph { width: 40px; height: 40px; color: var(--gold); }
+.dish-photo { display:block; width:calc(100% + 52px); height:172px; object-fit:cover; margin:-28px -26px 18px; border-radius:20px 20px 0 0; }
 .dish-name { font-family: var(--font-display); font-size: 24px; color: #FFF7E6; margin-top: 14px; }
 .dish-tag {
   font-size: 12px; font-weight: 700; letter-spacing: 1.5px;
@@ -1312,45 +1313,27 @@ img { max-width: 100%; }
     <div class="spec-grid">
         <div class="dish-card">
           <span class="dish-bar" style="background:#F2A81D;"></span>
-          <svg class="dish-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="13" r="7"/><path d="M18 13h4"/><path d="M8 13h.01M11 10h.01M14 13h.01M11 16h.01"/></svg>
-          <div class="dish-name">Fajitas</div>
-          <div class="dish-tag">Sizzling</div>
-          <p class="dish-desc">Marinated steak or chicken, seared with peppers and onions, served on a hot skillet.</p>
+          <img class="dish-photo" src="/assets/images/spec-fajitas.webp" alt="Fajitas mar y tierra at El Molcajete" loading="lazy" width="760" height="360"><div class="dish-name">Fajitas</div><div class="dish-tag">Sizzling</div><p class="dish-desc">Marinated steak and shrimp, seared with peppers and onions on a hot skillet.</p>
         </div>
         <div class="dish-card">
           <span class="dish-bar" style="background:#D33A6B;"></span>
-          <svg class="dish-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="6" rx="3"/><path d="M7 9v6M12 9v6M17 9v6"/></svg>
-          <div class="dish-name">Enchiladas</div>
-          <div class="dish-tag">House favorite</div>
-          <p class="dish-desc">Rolled tortillas smothered in our slow simmered regional sauces and melted cheese.</p>
+          <img class="dish-photo" src="/assets/images/spec-enchiladas.webp" alt="Enchiladas rancheras at El Molcajete" loading="lazy" width="760" height="360"><div class="dish-name">Enchiladas</div><div class="dish-tag">House favorite</div><p class="dish-desc">Rolled tortillas smothered in our slow-simmered ranchera sauce and melted cheese.</p>
         </div>
         <div class="dish-card">
           <span class="dish-bar" style="background:#0F8C7F;"></span>
-          <svg class="dish-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c4 2 6 6 6 10a6 6 0 0 1-12 0c0-4 2-8 6-10z"/><path d="M12 7v11"/></svg>
-          <div class="dish-name">Tamales</div>
-          <div class="dish-tag">Made from scratch</div>
-          <p class="dish-desc">Masa steamed in corn husks with savory fillings, a true taste of tradition.</p>
+          <img class="dish-photo" src="/assets/images/spec-tamales.webp" alt="Trio of tamales at El Molcajete" loading="lazy" width="760" height="360"><div class="dish-name">Tamales</div><div class="dish-tag">Made from scratch</div><p class="dish-desc">Masa steamed in corn husks with savory fillings, a true taste of tradition.</p>
         </div>
         <div class="dish-card">
           <span class="dish-bar" style="background:#7A3EA8;"></span>
-          <svg class="dish-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c3.5 0 6 3 6 8s-2.5 9-6 9-6-4-6-9 2.5-8 6-8z"/><circle cx="12" cy="13" r="2.5"/></svg>
-          <div class="dish-name">Guacamole</div>
-          <div class="dish-tag">Tableside fresh</div>
-          <p class="dish-desc">Ripe avocado mashed to order with lime, cilantro, onion and a pinch of sea salt.</p>
+          <img class="dish-photo" src="/assets/images/spec-sopes.webp" alt="Sopes at El Molcajete" loading="lazy" width="760" height="360"><div class="dish-name">Sopes</div><div class="dish-tag">Handmade</div><p class="dish-desc">Thick masa cups piled with beans, meat, lettuce, cheese and fresh salsa.</p>
         </div>
         <div class="dish-card">
           <span class="dish-bar" style="background:#B0201A;"></span>
-          <svg class="dish-glyph" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c.5 3-1.5 4.5-2.8 6.2C8 9.9 7.5 11.4 7.5 13a4.5 4.5 0 0 0 9 0c0-2-1-3.7-2.3-5 .2 1.3-.4 2.3-1.2 2.6.6-3.4-1.3-5.9-1-8.6z"/></svg>
-          <div class="dish-name">Carnitas</div>
-          <div class="dish-tag">Slow cooked</div>
-          <p class="dish-desc">Tender pork braised until golden, piled onto warm handmade tortillas.</p>
+          <img class="dish-photo" src="/assets/images/spec-carnitas.webp" alt="Carnitas bowl at El Molcajete" loading="lazy" width="760" height="360"><div class="dish-name">Carnitas</div><div class="dish-tag">Slow cooked</div><p class="dish-desc">Tender pork braised until golden, piled onto warm handmade tortillas.</p>
         </div>
         <div class="dish-card">
           <span class="dish-bar" style="background:#E9A020;"></span>
-          <svg class="dish-glyph" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20c-2 0-4-2-4-5 0-4 4-7 9-7 3 0 6 1 6 3 0 1-1 2-3 2"/><path d="M13 8c0-2 1-4 3-4"/></svg>
-          <div class="dish-name">Chiles Rellenos</div>
-          <div class="dish-tag">Regional classic</div>
-          <p class="dish-desc">Roasted poblano stuffed with cheese, lightly battered and bathed in ranchera.</p>
+          <img class="dish-photo" src="/assets/images/spec-pollopoblano.webp" alt="Pollo poblano at El Molcajete" loading="lazy" width="760" height="360"><div class="dish-name">Pollo Poblano</div><div class="dish-tag">Creamy</div><p class="dish-desc">Grilled chicken smothered in a rich poblano cream sauce, with rice.</p>
         </div>
     </div>
     <div class="center mt-44">
